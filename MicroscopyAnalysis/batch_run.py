@@ -3,14 +3,52 @@
 import cv2
 import pandas as pd
 import numpy as np
-from Preprocess import Enhance_contrast
-from Vesicle_detection import Multi_template_match
+from .Preprocess import Enhance_contrast
+from .Vesicle_detection import Multi_template_match
 # from utils import load_template
 # from utils import calculate_area
 import os
 
 def run_batch_files_templates(file_folder, templates, PlateName, 
                     min_scale=0.2, max_scale=1.5, intervals=10, threshold = 0.5, Preprocess=True, sigma=50):
+    
+    '''
+    Process a batch of image files to detect vesicles using template matching and save the results.
+
+    Parameters:
+    -----------
+    file_folder : str
+        The path to the folder containing the image files.
+    templates : list of numpy.ndarray
+        A list of templates to be used for matching vesicles in the images.
+    PlateName : str
+        The name of the plate, used for saving results.
+    min_scale : float, optional, default=0.2
+        The minimum scale factor for resizing templates.
+    max_scale : float, optional, default=1.5
+        The maximum scale factor for resizing templates.
+    intervals : int, optional, default=10
+        The number of intervals between min_scale and max_scale.
+    threshold : float, optional, default=0.5
+        The threshold for template matching. Only matches with a value above this threshold are considered.
+    Preprocess : bool, optional, default=True
+        Whether to preprocess the images before template matching.
+    sigma : int, optional, default=50
+        The sigma value for the Gaussian filter used in preprocessing.
+
+    Returns:
+    --------
+    None
+        The function saves the results to CSV files and prints status messages.
+
+    Notes:
+    ------
+    - This function processes each image and detects vesiclesin the specified folder,
+      and saves the detection results and summary statistics to CSV files.
+    - For each image, a CSV file containing the detection results is saved, as well as a summary CSV file
+      containing the file names, the number of vesicles, the total area of detected vesicles 
+      and their percentage relative to the image area.
+    '''
     
     filenames = []
     vesicle_numbers = []

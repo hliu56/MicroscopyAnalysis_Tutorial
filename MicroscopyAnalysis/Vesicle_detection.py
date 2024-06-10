@@ -9,8 +9,43 @@ formatted_datetime = current_datetime.strftime("%Y-%m-%d_%H")
 def Multi_template_match(filename, original_image, image, templates, PlateName, \
                          min_scale=0.5, max_scale=1.2, intervals=10, threshold = 0.6):
     '''
-    templates is the list of different templates
-    threshold is to specify the criteria for choosing matching shape
+    Perform multi-template multi-scale matching on a microscopy image to detect and locate vesicles.
+
+    Parameters:
+    -----------
+    filename : str
+        The name of the image file.
+    original_image : numpy.ndarray
+        The original image to be used for visualization of results.
+    image : numpy.ndarray
+        The image on which vesicle detection is to be performed.
+    templates : list of numpy.ndarray
+        A list of templates to be matched against the image.
+    PlateName : str
+        The name of the plate, used for saving results.
+    min_scale : float, optional, default=0.5
+        The minimum scale factor for resizing templates.
+    max_scale : float, optional, default=1.2
+        The maximum scale factor for resizing templates.
+    intervals : int, optional, default=10
+        The number of intervals between min_scale and max_scale.
+    threshold : float, optional, default=0.6
+        The threshold for template matching. Only matches with a value above this threshold are considered.
+
+    Returns:
+    --------
+    match_results : numpy.ndarray or None
+        A 2D array where each row corresponds to a detected object. Each row contains:
+        [x_center, y_center, detecting_box_length, match_score].
+        If no objects are detected, returns None.
+    len_match_results : int
+        The number of detected objects. Returns 0 if no objects are detected.
+
+    Notes:
+    ------
+    - This function uses multi-scale template matching to detect objects of varying sizes.
+    - Overlapping bounding boxes are removed based on the match score, keeping only the highest value matches.
+    - The results are visualized and saved as an image file.
     
     '''
     # Generate a linear space of scales
