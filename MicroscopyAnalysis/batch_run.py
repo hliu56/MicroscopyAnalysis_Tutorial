@@ -3,10 +3,8 @@
 import cv2
 import pandas as pd
 import numpy as np
-from .Preprocess import Enhance_contrast
-from .Vesicle_detection import Multi_template_match
-# from utils import load_template
-# from utils import calculate_area
+from MicroscopyAnalysis.Preprocess import Enhance_contrast
+from MicroscopyAnalysis.Vesicle_detection import Multi_template_match
 import os
 
 def run_batch_files_templates(file_folder, templates, PlateName, 

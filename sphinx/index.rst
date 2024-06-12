@@ -11,6 +11,11 @@ Welcome to Microscopy analysis tutorial's documentation!
    :caption: Contents:
 
    modules
+   usage
+
+
+
+`View on GitHub <https://github.com/hliu56/MicroscopyAnalysis_Tutorial>`_
 
 Indices and tables
 ==================

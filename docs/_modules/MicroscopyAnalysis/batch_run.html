@@ -44,6 +44,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">MicroscopyAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage Examples</a></li>
 </ul>
 
         </div>
@@ -76,10 +77,8 @@
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">.Preprocess</span> <span class="kn">import</span> <span class="n">Enhance_contrast</span>
-<span class="kn">from</span> <span class="nn">.Vesicle_detection</span> <span class="kn">import</span> <span class="n">Multi_template_match</span>
-<span class="c1"># from utils import load_template</span>
-<span class="c1"># from utils import calculate_area</span>
+<span class="kn">from</span> <span class="nn">MicroscopyAnalysis.Preprocess</span> <span class="kn">import</span> <span class="n">Enhance_contrast</span>
+<span class="kn">from</span> <span class="nn">MicroscopyAnalysis.Vesicle_detection</span> <span class="kn">import</span> <span class="n">Multi_template_match</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <div class="viewcode-block" id="run_batch_files_templates"><a class="viewcode-back" href="../../MicroscopyAnalysis.html#MicroscopyAnalysis.batch_run.run_batch_files_templates">[docs]</a><span class="k">def</span> <span class="nf">run_batch_files_templates</span><span class="p">(</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">PlateName</span><span class="p">,</span> 
