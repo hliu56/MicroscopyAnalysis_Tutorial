@@ -26,6 +26,10 @@ If you don't have Python installed, download and install it from [python.org](ht
 2. Navigate to the folder where you extracted the project files. For example:
    ```bash
    cd path/to/MicroscopyAnalysis_Tutorial
+3. Install the required Python packages by running:
+   `pip install -r requirements.txt'
+4. Run the main script. In the command prompt or terminal, run the following command:
+   `python MicroscopyAnalysis/main.py`
 
 ## Usage
 
