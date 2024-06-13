@@ -68,7 +68,7 @@ See the `LICENSE` file for more information.
 
 ## Contact
 
-Academic collaborations and extensions/improvements by the community are encouraged. Please contact [HL] (hliu23@fordham.edu) by email if you have questions.
+Academic collaborations and extensions/improvements by the community are encouraged. Please contact [HL](hliu23@fordham.edu) by email if you have questions.
 
 ## Citations
 
