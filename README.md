@@ -6,6 +6,27 @@ The automated iamge analysis pipeline include:
 - Vesicle detection
 - Batch processing
 
+# Installation
+
+Follow these steps to set up the Microscopy Analysis Tutorial on your computer:
+
+### Step 1: Install Python
+
+If you don't have Python installed, download and install it from [python.org](https://www.python.org/downloads/). Make sure to check the option to add Python to your PATH during installation.
+
+### Step 2: Download the Project Files
+
+1. Go to the [GitHub repository](https://github.com/hliu56/MicroscopyAnalysis_Tutorial).
+2. Click the green "Code" button and select "Download ZIP".
+3. Extract the downloaded ZIP file to a folder on your computer.
+
+### Step 3: Install Dependencies
+
+1. Open a command prompt (Windows) or terminal (macOS/Linux).
+2. Navigate to the folder where you extracted the project files. For example:
+   ```bash
+   cd path/to/MicroscopyAnalysis_Tutorial
+
 ## Usage
 
 This section show the minimal code examples illustrating how to use the functions.
