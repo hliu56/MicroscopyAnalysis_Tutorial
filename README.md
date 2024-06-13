@@ -30,7 +30,7 @@ If you don't have Python installed, download and install it from [python.org](ht
 ## Usage
 
 This section show the minimal code examples illustrating how to use the functions.
-You can also check the [documentation site] (https://hliu56.github.io/MicroscopyAnalysis_Tutorial/#).
+You can also check the [documentation site](https://hliu56.github.io/MicroscopyAnalysis_Tutorial/#).
 
 Here we provide some example code to analysis batch images from a folder. Three parameters are needed for `main` function.
 `file_folder`: The folder stored the images that needed to be analyzed
