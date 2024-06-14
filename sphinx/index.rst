@@ -10,6 +10,7 @@ Welcome to Microscopy analysis tutorial's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   installation
    modules
    usage
 
