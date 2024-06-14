@@ -111,12 +111,67 @@
 <dt class="sig sig-object py" id="MicroscopyAnalysis.Preprocess.Enhance_contrast">
 <span class="sig-prename descclassname"><span class="pre">MicroscopyAnalysis.Preprocess.</span></span><span class="sig-name descname"><span class="pre">Enhance_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PlateName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MicroscopyAnalysis/Preprocess.html#Enhance_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MicroscopyAnalysis.Preprocess.Enhance_contrast" title="Link to this definition"></a></dt>
 <dd><p>Preprocess an image with background subtraction, contrast enhancement, and noise suppression.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>The path to the image file.</p>
+</dd>
+<dt>PlateName<span class="classifier">str</span></dt><dd><p>The name of the plate, used for saving results.</p>
+</dd>
+<dt>image_type<span class="classifier">str</span></dt><dd><p>The type of the image. Supported types are ‘uint16’, ‘gray’, and ‘RGB’.</p>
+</dd>
+<dt>sigma_size<span class="classifier">int, optional, default=50</span></dt><dd><p>The sigma value for the Gaussian filter used in background subtraction.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>noise_suppressed<span class="classifier">numpy.ndarray</span></dt><dd><p>The preprocessed image after noise suppression.</p>
+</dd>
+<dt>image<span class="classifier">numpy.ndarray</span></dt><dd><p>The original image loaded from the path.</p>
+</dd>
+<dt>filename<span class="classifier">str</span></dt><dd><p>The filename of the processed image.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This function performs several preprocessing steps on the image:
+1. Background subtraction using a Gaussian filter.
+2. Contrast enhancement using CLAHE (Contrast Limited Adaptive Histogram Equalization).
+3. Noise suppression using a Gaussian blur.</p></li>
+<li><p>The intermediate and final results are visualized and saved as an image file.</p></li>
+</ul>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="MicroscopyAnalysis.Preprocess.transform_uint8">
 <span class="sig-prename descclassname"><span class="pre">MicroscopyAnalysis.Preprocess.</span></span><span class="sig-name descname"><span class="pre">transform_uint8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MicroscopyAnalysis/Preprocess.html#transform_uint8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MicroscopyAnalysis.Preprocess.transform_uint8" title="Link to this definition"></a></dt>
 <dd><p>Transform a uint16 image to a uint8 image.</p>
+<section id="id1">
+<h3>Parameters:<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>image_path<span class="classifier">str</span></dt><dd><p>The path to the uint16 image file.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns:<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>image_uint8<span class="classifier">numpy.ndarray</span></dt><dd><p>The transformed uint8 image.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Notes:<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The function reads an image in uint16 format, normalizes its pixel values to the range 0-255,
+and converts it to uint8 format.</p></li>
+</ul>
+</section>
 </dd></dl>
 
 </section>
@@ -126,6 +181,48 @@
 <dt class="sig sig-object py" id="MicroscopyAnalysis.Vesicle_detection.Multi_template_match">
 <span class="sig-prename descclassname"><span class="pre">MicroscopyAnalysis.Vesicle_detection.</span></span><span class="sig-name descname"><span class="pre">Multi_template_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">templates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PlateName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MicroscopyAnalysis/Vesicle_detection.html#Multi_template_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MicroscopyAnalysis.Vesicle_detection.Multi_template_match" title="Link to this definition"></a></dt>
 <dd><p>Perform multi-template multi-scale matching on a microscopy image to detect and locate vesicles.</p>
+<section id="id4">
+<h3>Parameters:<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>filename<span class="classifier">str</span></dt><dd><p>The name of the image file.</p>
+</dd>
+<dt>original_image<span class="classifier">numpy.ndarray</span></dt><dd><p>The original image to be used for visualization of results.</p>
+</dd>
+<dt>image<span class="classifier">numpy.ndarray</span></dt><dd><p>The image on which vesicle detection is to be performed.</p>
+</dd>
+<dt>templates<span class="classifier">list of numpy.ndarray</span></dt><dd><p>A list of templates to be matched against the image.</p>
+</dd>
+<dt>PlateName<span class="classifier">str</span></dt><dd><p>The name of the plate, used for saving results.</p>
+</dd>
+<dt>min_scale<span class="classifier">float, optional, default=0.5</span></dt><dd><p>The minimum scale factor for resizing templates.</p>
+</dd>
+<dt>max_scale<span class="classifier">float, optional, default=1.2</span></dt><dd><p>The maximum scale factor for resizing templates.</p>
+</dd>
+<dt>intervals<span class="classifier">int, optional, default=10</span></dt><dd><p>The number of intervals between min_scale and max_scale.</p>
+</dd>
+<dt>threshold<span class="classifier">float, optional, default=0.6</span></dt><dd><p>The threshold for template matching. Only matches with a value above this threshold are considered.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns:<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>match_results<span class="classifier">numpy.ndarray or None</span></dt><dd><p>A 2D array where each row corresponds to a detected object. Each row contains:
+[x_center, y_center, detecting_box_length, match_score].
+If no objects are detected, returns None.</p>
+</dd>
+<dt>len_match_results<span class="classifier">int</span></dt><dd><p>The number of detected objects. Returns 0 if no objects are detected.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>Notes:<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This function uses multi-scale template matching to detect objects of varying sizes.</p></li>
+<li><p>Overlapping bounding boxes are removed based on the match score, keeping only the highest value matches.</p></li>
+<li><p>The results are visualized and saved as an image file.</p></li>
+</ul>
+</section>
 </dd></dl>
 
 </section>
@@ -135,6 +232,46 @@
 <dt class="sig sig-object py" id="MicroscopyAnalysis.batch_run.run_batch_files_templates">
 <span class="sig-prename descclassname"><span class="pre">MicroscopyAnalysis.batch_run.</span></span><span class="sig-name descname"><span class="pre">run_batch_files_templates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">templates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PlateName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Preprocess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MicroscopyAnalysis/batch_run.html#run_batch_files_templates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MicroscopyAnalysis.batch_run.run_batch_files_templates" title="Link to this definition"></a></dt>
 <dd><p>Process a batch of image files to detect vesicles using template matching and save the results.</p>
+<section id="id7">
+<h3>Parameters:<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>file_folder<span class="classifier">str</span></dt><dd><p>The path to the folder containing the image files.</p>
+</dd>
+<dt>templates<span class="classifier">list of numpy.ndarray</span></dt><dd><p>A list of templates to be used for matching vesicles in the images.</p>
+</dd>
+<dt>PlateName<span class="classifier">str</span></dt><dd><p>The name of the plate, used for saving results.</p>
+</dd>
+<dt>min_scale<span class="classifier">float, optional, default=0.2</span></dt><dd><p>The minimum scale factor for resizing templates.</p>
+</dd>
+<dt>max_scale<span class="classifier">float, optional, default=1.5</span></dt><dd><p>The maximum scale factor for resizing templates.</p>
+</dd>
+<dt>intervals<span class="classifier">int, optional, default=10</span></dt><dd><p>The number of intervals between min_scale and max_scale.</p>
+</dd>
+<dt>threshold<span class="classifier">float, optional, default=0.5</span></dt><dd><p>The threshold for template matching. Only matches with a value above this threshold are considered.</p>
+</dd>
+<dt>Preprocess<span class="classifier">bool, optional, default=True</span></dt><dd><p>Whether to preprocess the images before template matching.</p>
+</dd>
+<dt>sigma<span class="classifier">int, optional, default=50</span></dt><dd><p>The sigma value for the Gaussian filter used in preprocessing.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns:<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>None</dt><dd><p>The function saves the results to CSV files and prints status messages.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Notes:<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This function processes each image and detects vesiclesin the specified folder,
+and saves the detection results and summary statistics to CSV files.</p></li>
+<li><p>For each image, a CSV file containing the detection results is saved, as well as a summary CSV file
+containing the file names, the number of vesicles, the total area of detected vesicles
+and their percentage relative to the image area.</p></li>
+</ul>
+</section>
 </dd></dl>
 
 </section>
