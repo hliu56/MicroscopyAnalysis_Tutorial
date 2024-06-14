@@ -48,7 +48,9 @@ Open Anaconda, search the pacakges in 'Not installed' menu, check the packages a
 
 ### Step 4: Run the scripts
 
-1. Run the main script in terminal., use the following command in your terminal:
+1. Run the main script in jupyter notebook. Copy the code in the Usage section(Next section) and run.
+
+2. Run the main script in terminal, use the following command in your terminal:
 
 ```bash
 python main.py <file_folder> <PlateName> [--templates <template_file1> <template_file2> ... <template_fileN>]
@@ -64,7 +66,7 @@ python main.py <file_folder> <PlateName> [--templates <template_file1> <template
   python main.py Data/Test_0517 Plate_2024605 --templates Templates/custom_template1.npy Templates/custom_template2.npy
 
 
-2. Run the main script in jupyter notebook. Copy the code in the Usage section(Next section) and run.
+
 
 ## Usage
 
