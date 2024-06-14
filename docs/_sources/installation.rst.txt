@@ -35,7 +35,7 @@ Users should only need to install these packages: `matplotlib`, `numpy`, `pandas
 Open Anaconda, search the packages in the 'Not installed' menu, check the packages, and click apply.
 
 .. image:: https://raw.githubusercontent.com/hliu56/MicroscopyAnalysis_Tutorial/main/Example/InstallationExample.png
-    :width: 400
+    :width: 600
     :alt: Installation packages example
 
 **Option 2: Install dependencies from terminal**
