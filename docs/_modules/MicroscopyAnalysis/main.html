@@ -43,6 +43,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">MicroscopyAnalysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage Examples</a></li>
 </ul>
@@ -73,29 +74,21 @@
              
   <h1>Source code for MicroscopyAnalysis.main</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">.batch_run</span> <span class="kn">import</span> <span class="n">run_batch_files_templates</span>
-
-
-
-<span class="c1"># template1 = np.load(&#39;Templates/template_656, 640, 71, 71.npy&#39;)</span>
-<span class="c1"># template2 = np.load(&#39;Templates/Project_Whole Plate1_1024x1024_200Hz_1%Laser_800gain_B_5_R1.tif_enhance_482_20_56_56.npy&#39;)</span>
-<span class="c1"># template3 = np.load(&#39;Templates/1024x1024 - 4 point_no-z-stack - split 5 rows rows only_TileScan 1_C_11_R2.npy&#39;)</span>
-<span class="c1"># templates = [template1, template2, template3]</span>
-<span class="c1"># file_folder= &#39;Data/Test_0517&#39;</span>
-<span class="c1"># PlateName=&#39;Plate_2024605&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">MicroscopyAnalysis.batch_run</span> <span class="kn">import</span> <span class="n">run_batch_files_templates</span>
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../MicroscopyAnalysis.html#MicroscopyAnalysis.main.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">PlateName</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This is the main python module to running vesicles detection on batch images</span>
+<span class="sd">    This is the main python module to run vesicles detection on batch images.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">folder_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Results_</span><span class="si">{</span><span class="n">PlateName</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1"># Record the start time</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">run_batch_files_templates</span><span class="p">(</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">PlateName</span><span class="p">,</span> \
-                    <span class="n">min_scale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">max_scale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">intervals</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">Preprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">min_scale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">max_scale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">intervals</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Preprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1"># Record the end time</span>
     <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -105,8 +98,25 @@
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Script execution time:&quot;</span><span class="p">,</span> <span class="n">running_time</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span></div>
 
-<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run vesicles detection on batch images.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;file_folder&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The folder containing the image files. Example: Data/Test_0517&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;PlateName&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The name of the plate. Example: Plate_2024605&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--templates&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Optional: Paths to the template files.&#39;</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">templates</span><span class="p">:</span>
+        <span class="c1"># Load user-specified templates</span>
+        <span class="n">templates</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">template_file</span><span class="p">)</span> <span class="k">for</span> <span class="n">template_file</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">templates</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Load default templates (hardcoded paths)</span>
+        <span class="n">template1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Templates/template_656_640_71_71.npy&#39;</span><span class="p">)</span>
+        <span class="n">template2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Templates/Project_Whole_Plate1_1024x1024_200Hz_1</span><span class="si">%La</span><span class="s1">ser_800gain_B_5_R1.tif_enhance_482_20_56_56.npy&#39;</span><span class="p">)</span>
+        <span class="n">template3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Templates/1024x1024_4_point_no-z-stack_split_5_rows_rows_only_TileScan_1_C_11_R2.npy&#39;</span><span class="p">)</span>
+        <span class="n">templates</span> <span class="o">=</span> <span class="p">[</span><span class="n">template1</span><span class="p">,</span> <span class="n">template2</span><span class="p">,</span> <span class="n">template3</span><span class="p">]</span>
+
+    <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">file_folder</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">PlateName</span><span class="p">)</span>
 </pre></div>
 
            </div>
