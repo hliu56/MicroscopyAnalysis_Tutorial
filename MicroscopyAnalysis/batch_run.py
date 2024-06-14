@@ -12,7 +12,7 @@ def run_batch_files_templates(file_folder, templates, PlateName,
     
     '''
     Process a batch of image files to detect vesicles using template matching and save the results.
-
+    
     Parameters:
     -----------
     file_folder : str
